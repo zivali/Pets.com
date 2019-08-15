@@ -5,9 +5,8 @@
             <div v-bind:key="data.index" v-for="data in pets">
               <b-col l="4">
                 <b-card class="col-3 text-center " 
-                  v-bind:title="data.animal_subid"
-                  v-bind:img-src="data.album_file" alt="Card image cap" 
-                  img-alt="Image"
+                  v-bind:title="data.animal_kind"
+                  img v-if="data.album_file" :img-src="data.album_file" alt="Card image cap"
                   img-top
                   tag="article"
                   style="max-width: 20rem;"
