@@ -2,19 +2,19 @@
   <b-container>
     <div>
       <b-card-group deck class="mt-3">
-        <!--所有card都在同一個-->
+        <!--所有card都在同一個card deck-->
         <div v-bind:key="data.index" v-for="data in pets">
           <b-card
-            class="col-auto text-center mb-3 card-img-top img-fluid"
-
+            class="col-auto text-center mb-3 img-fluid"
+            style="width: 20rem;"
             v-bind:title="data.animal_kind"
             img
             v-if="data.album_file"
             :img-src="data.album_file"
             alt="Image"
+            card-img-top
             img-top
             tag="article"
-            style="width: 20rem;"
           >
             <!--<b-card-text>{{ `${data.strCategoryDescription.slice(0,100)}...` }}</b-card-text>-->
             <b-button href="#" variant="info">View pet</b-button>
