@@ -7,13 +7,15 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faSpinner, faPaw } from '@fortawesome/free-solid-svg-icons'
-
-
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 library.add(faSpinner, faPaw)
  
+import InfiniteLoading from 'vue-infinite-loading';
+Vue.use(InfiniteLoading);
+
 Vue.config.productionTip = false
 Vue.use(BootstrapVue)
+
 
 new Vue({
   render: h => h(App),

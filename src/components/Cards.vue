@@ -48,14 +48,11 @@
 </template>
     
 <script>
+import axios from 'axios';
+
 export default {
     methods: {
-    hoverCard(selectedIndex) {
-      this.selectedCard = selectedIndex
-    },
-    isSelected(cardIndex) {
-      return this.selectedCard === cardIndex
-    }
+    
   },
   data() {
     return {
@@ -63,13 +60,13 @@ export default {
     };
   },
   mounted() {
-    fetch(
+    axios.get(
       "https://cors-anywhere.herokuapp.com/http://data.coa.gov.tw/Service/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL&$top=20&$skip=0"
     )
-      .then(response => response.json())
-      .then(data => {
-        this.pets = data;
-      });
+      .then(response => {
+      // JSON responses are automatically parsed.
+      this.pets = response.data
+    });
   },
 }
 </script>
