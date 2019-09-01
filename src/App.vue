@@ -1,17 +1,13 @@
 <template>
   <div id="app">
-    <Navbar />
-    <HelloWorld/>
+    <router-view />
   </div>
 </template>
 <script>
- import HelloWorld from './components/HelloWorld.vue'
-  import Navbar from './components/Navbar.vue';  
-  export default {
-    name: 'navbar',
-    components: {
-      Navbar,
-      HelloWorld
-    }
+export default {
+  name: "app",
+  components: {
+
   }
+};
 </script>

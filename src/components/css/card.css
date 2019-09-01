@@ -1,3 +1,6 @@
+.body{
+    padding-top: 65px; 
+}
 .card {
   /* the other rules */
   transition: height 0.3s, box-shadow 0.3s;

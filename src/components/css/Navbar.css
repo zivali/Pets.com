@@ -1,0 +1,9 @@
+.navbar {
+    z-index: 100;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+}
+b-nav-item {
+    text-decoration: none;
+}

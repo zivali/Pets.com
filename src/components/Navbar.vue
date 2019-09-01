@@ -1,27 +1,33 @@
 <template>
-    <div>
-      <b-navbar toggleable="lg" type="dark" variant="info">
-        <b-container>
-            <b-navbar-brand href="#">Pets.com</b-navbar-brand>
-            <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-            <b-collapse id="nav-collapse" is-nav>
-              <!-- Right aligned nav items -->
-            </b-collapse>
-          </b-container>
-      </b-navbar>
-    </div>  
+  <div>
+    <b-navbar class="navbar-static-top" toggleable="lg" type="dark" variant="info">
+      <b-container>
+        <router-link class="navbar-brand" to="/">Pets.com (施工中...)</router-link>
+        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+        <b-collapse id="nav-collapse" is-nav>
+          <b-navbar-nav>
+            <b-nav-item>
+              <router-link class="b-nav-item" to="/dogs">領養狗狗</router-link>
+            </b-nav-item>
+            <b-nav-item>
+              <router-link class="b-nav-item" to="/cats">領養貓貓</router-link>
+            </b-nav-item>
+          </b-navbar-nav>
+
+          <!-- Right aligned nav items -->
+          <b-navbar-nav class="ml-auto">
+            <router-link class="b-nav-item" to="/animal/116859">關於</router-link>
+          </b-navbar-nav>
+        </b-collapse>
+      </b-container>
+    </b-navbar>
+    <!-- cards -->
+    <router-view />
+  </div>
 </template>
 <script>
-export default {
-    data() {
-        return {
-            meal: ''
-        }
-    },
-  methods: {
-    getMeal() {
-      
-    }
-  }
-}    
+export default {};
 </script>
+<style>
+@import "./css/Navbar.css";
+</style>

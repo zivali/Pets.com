@@ -20,8 +20,6 @@
                 <router-link class="info" :to="`/animal/${data.animal_id}`">帶我回家</router-link>
               </div>
 
-              <!--
-                <b-card-title>{{"可愛的" + data.animal_kind + data.animal_kind}}</b-card-title>-->
               <!--sex-->
               <div>
                 <span class="detail-text --title">
@@ -47,9 +45,6 @@
                 </span>
                 <span class="detail-text"></span>
               </div>
-
-              <!--<b-card-text>{{ `${data.strCategoryDescription.slice(0,100)}...` }}</b-card-text>
-              <b-button href="#" variant="info">View pet</b-button>-->
             </b-card>
           </div>
         </b-card-group>
@@ -68,14 +63,11 @@ let api =
 export default {
   methods: {
     //infinite loading
-    infiniteHandler($state) {
-      let key = "&$top=" + this.top + "&$skip=" + this.skip; //query params
+    infiniteHandler($state) {  
+      let key = "&$top=" + this.top + "&$skip=" + this.skip + "&animal_kind=貓"; //query params
       axios.get(api + key).then(response => {
         if (response.data) {
           this.pets = this.pets.concat(response.data);
-          /*test
-          // eslint-disable-next-line no-console
-          console.log(this.pets);*/
           this.skip += 20;  //keep on loading 20 more
           $state.loaded();
         } else {
@@ -91,14 +83,6 @@ export default {
       skip: 0
     };
   }
-  /*mounted() {
-    let key = "&$top=" + top + "&$skip=" + skip;
-
-    axios.get(api + key).then(response => {
-      // JSON responses are automatically parsed.
-      this.pets = response.data;
-    });
-  }*/
 };
 </script>
 <style>
