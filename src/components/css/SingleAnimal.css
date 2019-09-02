@@ -1,5 +1,15 @@
-.img-thumbnail{
-    border:none !important;
-    background: transparent !important;
-    box-shadow:none !important;
- }
+.bg
+  {
+    background-size: 200px;
+    background-repeat: repeat;
+    background-image: url("../paws3.png");
+  }
+
+  .single{
+      transition: height 0.2s, box-shadow 0.3s;
+  }
+  .imgtop {
+    width: 80%;
+    height: auto;
+    object-fit: cover;
+}

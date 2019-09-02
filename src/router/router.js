@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar.vue";
 import SingleAnimal from "../components/SingleAnimal.vue";
 import Dogs from '../components/Dogs.vue'
 import Cats from '../components/Cats.vue'
-
+import About from '../components/About.vue'
 
 Vue.use(Router)
 export default new Router({
@@ -25,6 +25,7 @@ export default new Router({
           name: 'SingleAnimal',
           component: SingleAnimal,
         },
+        //Navbar
         {
           path: '/dogs',
           name: 'Dogs',
@@ -35,6 +36,11 @@ export default new Router({
           name: 'Cats',
           component: Cats,
         },
+        {
+          path: '/about',
+          name: 'About',
+          component: About
+        }
       ]
       
     }

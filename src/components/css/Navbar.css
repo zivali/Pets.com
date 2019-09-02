@@ -4,6 +4,6 @@
     top: 0px;
     width: 100%;
 }
-b-nav-item {
-    text-decoration: none;
-}
+.b-nav-item{
+    color:white!important
+  }
