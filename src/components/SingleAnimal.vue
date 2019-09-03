@@ -2,6 +2,7 @@
   <div class="container bg">
     <div class="row justify-content-center my-5">
       <b-row>
+        <div></div>
         <!-- animal-image -->
         <div class="col-md-6 order-md-1 text-center">
           <!-- <img :src="pet[0].album_file" class="rounded shadow" alt />-->

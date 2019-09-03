@@ -45,7 +45,7 @@
                 <span class="detail-text --title">
                   <font-awesome-icon :icon="['fas', 'paw']" />所在地
                 </span>
-                <span class="detail-text"></span>
+                <span class="detail-text">{{data.animal_place.slice(0,3)}}</span>
               </div>
 
               <!--<b-card-text>{{ `${data.strCategoryDescription.slice(0,100)}...` }}</b-card-text>
@@ -90,6 +90,11 @@ export default {
       top: 20,
       skip: 0
     };
+  },
+  computed:{
+    animal_place: function() {
+      return this.pet.animal_place.slice(0,3);
+    },
   }
   /*mounted() {
     let key = "&$top=" + top + "&$skip=" + skip;
