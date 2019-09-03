@@ -43,7 +43,7 @@
                 <span class="detail-text --title">
                   <font-awesome-icon :icon="['fas', 'paw']" />所在地
                 </span>
-                <span class="detail-text"></span>
+                <span class="detail-text">{{data.animal_place.slice(0,3)}}</span>
               </div>
             </b-card>
           </div>
