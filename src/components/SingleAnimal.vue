@@ -67,7 +67,7 @@
             </b-list-group-item>
             <b-list-group-item variant="danger">
               <font-awesome-icon :icon="['fas', 'phone-alt']" />
-              收容所電話: <a id="shelterTel" href="tel:" @click="telephone">{{shelter_tel}}</a>
+              收容所電話: <a id="shelterTel" href="tel" @click="telephone">{{shelter_tel}}</a>
             </b-list-group-item>
             <b-list-group-item variant="info">
               <font-awesome-icon :icon="['fas', 'comment-dots']" />
@@ -203,9 +203,11 @@ export default {
   methods: {
       telephone: function() {
       //call shelter
-      document.getElementsById('shelterTel').href += this.pet[0].shelter_tel;
+      let ele = document.getElementById('shelterTel');
+      ele.href = 'tel:' + this.pet[0].shelter_tel;
+      return ele;
       // eslint-disable-next-line
-      console.log(document.getElementsById('shelterTel').href);    
+      console.log(ele.href);    
       }
   }
 };
