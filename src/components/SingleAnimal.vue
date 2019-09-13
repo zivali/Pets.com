@@ -4,40 +4,30 @@
       <b-row>
         <div></div>
         <!-- animal-image -->
-        <div class="col-md-6 order-md-1 text-center">
+        <div class="col-md-5 order-md-1 text-center">
           <!-- <img :src="pet[0].album_file" class="rounded shadow" alt />-->
-          <b-card
-            class="mt-4 single"
-            :img-src="pet[0].album_file"
-            imgtop
-            style="max-width: 50rem;"
-          >
-          </b-card>
+          <b-card class="mt-4 single" :img-src="pet[0].album_file" imgtop style="max-width: 50rem;"></b-card>
         </div>
         <!-- animal description text -->
-        <div class="col-md-3 order-md-2 mt-md-0">
+        <div class="col-md-3 order-md-2 mt-3">
           <span class="h5">動物資訊</span>
           <b-list-group class="h6">
-            <b-list-group-item variant="warning">編號: {{animal_id}}</b-list-group-item>
-            <b-list-group-item variant="success">區域編號: {{animal_subid}}</b-list-group-item>
-            <b-list-group-item variant="danger">性別: {{animal_sex}}</b-list-group-item>
-            <b-list-group-item variant="info">體型: {{animal_bodytype}}</b-list-group-item>
-            <b-list-group-item variant="warning">年齡: {{animal_age}}</b-list-group-item>
-            <b-list-group-item variant="success">毛色: {{animal_colour}}</b-list-group-item>
-            <b-list-group-item variant="danger">是否絕育: {{animal_sterilization}}</b-list-group-item>
-            <b-list-group-item variant="info">是否施打狂犬病疫苗: {{animal_bacterin}}</b-list-group-item>
-            <b-list-group-item variant="warning">發現地: {{animal_foundplace}}</b-list-group-item>
+            <b-list-group-item variant="success"><font-awesome-icon :icon="['fas', 'tag']" /> 編號: {{animal_id}}</b-list-group-item>
+            <b-list-group-item variant="danger"><font-awesome-icon :icon="['fas', 'star']" /> 區域編號: <br><br/>{{animal_subid}}</b-list-group-item>
+            <b-list-group-item variant="info"><font-awesome-icon :icon="['fas', 'venus-mars']" /> 性別: {{animal_sex}}</b-list-group-item>
+            <b-list-group-item variant="warning"><font-awesome-icon :icon="['fas', 'paw']" /> 體態: {{animal_bodytype}}, {{animal_age}}, {{animal_colour}}</b-list-group-item>
+            <b-list-group-item variant="success"><font-awesome-icon :icon="['fas', 'briefcase-medical']" /> 醫療: <br><br/>{{animal_sterilization}}, {{animal_bacterin}}</b-list-group-item>
           </b-list-group>
         </div>
         <!-- location description text -->
-        <div class="col-md-3 order-md-3 mt-md-0">
+        <div class="col-md-4 order-md-3 mt-3">
           <span class="h5">帶他回家</span>
           <b-list-group class="h6">
-            <b-list-group-item variant="warning">所在地: {{animal_place}}</b-list-group-item>
-            <b-list-group-item variant="success">所屬收容所: {{shelter_name}}</b-list-group-item>
-            <b-list-group-item variant="danger">收容所地址: {{shelter_address}}</b-list-group-item>
-            <b-list-group-item variant="info">收容所電話: {{shelter_tel}}</b-list-group-item>
-            <b-list-group-item variant="warning">備註: {{animal_remark}}</b-list-group-item>
+            <b-list-group-item variant="info"><font-awesome-icon :icon="['fas', 'search']" /> 發現地: {{animal_foundplace}}</b-list-group-item>
+            <b-list-group-item variant="warning"><font-awesome-icon :icon="['fas', 'home']" /> 所屬收容所: <br><br/>{{shelter_name}}</b-list-group-item>
+            <b-list-group-item variant="success"><font-awesome-icon :icon="['fas', 'thumbtack']" /> 收容所地址: {{shelter_address}}</b-list-group-item>
+            <b-list-group-item variant="danger"><font-awesome-icon :icon="['fas', 'phone-alt']" /> 收容所電話: {{shelter_tel}}</b-list-group-item>
+            <b-list-group-item variant="info"><font-awesome-icon :icon="['fas', 'comment-dots']" /> 備註: {{animal_remark}}</b-list-group-item>
           </b-list-group>
         </div>
       </b-row>
@@ -110,7 +100,7 @@ export default {
         age = "成年";
         return age;
       } else {
-        age = "未知";
+        age = "年齡未知";
         return age;
       }
     },
@@ -120,26 +110,26 @@ export default {
     animal_sterilization: function() {
       let sterilization = "";
       if (this.pet[0].animal_sterilization === "T") {
-        sterilization = "是";
+        sterilization = "已絕育";
         return sterilization;
       } else if (this.pet[0].animal_sterilization === "F") {
-        sterilization = "否";
+        sterilization = "未絕育";
         return sterilization;
       } else {
-        sterilization = "未知";
+        sterilization = "不確定是否絕育";
         return sterilization;
       }
     },
     animal_bacterin: function() {
       let bacterin = "";
       if (this.pet[0].animal_bacterin === "T") {
-        bacterin = "是";
+        bacterin = "已施打狂犬疫苗";
         return bacterin;
       } else if (this.pet[0].animal_bacterin === "F") {
-        bacterin = "否";
+        bacterin = "未施打狂犬疫苗";
         return bacterin;
       } else {
-        bacterin = "未知";
+        bacterin = "不確定是否施打狂犬疫苗";
         return bacterin;
       }
     },

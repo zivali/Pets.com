@@ -6,6 +6,7 @@ import SingleAnimal from "../components/SingleAnimal.vue";
 import Dogs from '../components/Dogs.vue'
 import Cats from '../components/Cats.vue'
 import About from '../components/About.vue'
+import Filter from '../components/Filter.vue'
 
 Vue.use(Router)
 export default new Router({
@@ -17,8 +18,15 @@ export default new Router({
       children: [
         {
           path: '',
-          name: 'Cards',
-          component: Cards,
+          name: 'Filter',
+          component: Filter,
+          children: [
+            {
+              path: '',
+              name: 'Cards',
+              component: Cards,
+            }
+          ]
         },
         {
           path: '/animal/:petId',
@@ -42,7 +50,7 @@ export default new Router({
           component: About
         }
       ]
-      
+
     }
   ]
 })

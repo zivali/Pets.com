@@ -21,7 +21,7 @@
         </b-collapse>
       </b-container>
     </b-navbar>
-    <!-- cards -->
+    <!-- filter section -->
     <router-view />
   </div>
 </template>
