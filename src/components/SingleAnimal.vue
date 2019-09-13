@@ -15,7 +15,7 @@
             <b-list-group-item variant="success"><font-awesome-icon :icon="['fas', 'tag']" /> 編號: {{animal_id}}</b-list-group-item>
             <b-list-group-item variant="danger"><font-awesome-icon :icon="['fas', 'star']" /> 區域編號: <br><br/>{{animal_subid}}</b-list-group-item>
             <b-list-group-item variant="info"><font-awesome-icon :icon="['fas', 'venus-mars']" /> 性別: {{animal_sex}}</b-list-group-item>
-            <b-list-group-item variant="warning"><font-awesome-icon :icon="['fas', 'paw']" /> 體態: {{animal_bodytype}}, {{animal_age}}, {{animal_colour}}</b-list-group-item>
+            <b-list-group-item variant="warning"><font-awesome-icon :icon="['fas', 'paw']" /> 體態: <br><br/>{{animal_bodytype}}, {{animal_age}}, {{animal_colour}}</b-list-group-item>
             <b-list-group-item variant="success"><font-awesome-icon :icon="['fas', 'briefcase-medical']" /> 醫療: <br><br/>{{animal_sterilization}}, {{animal_bacterin}}</b-list-group-item>
           </b-list-group>
         </div>
@@ -25,10 +25,11 @@
           <b-list-group class="h6">
             <b-list-group-item variant="info"><font-awesome-icon :icon="['fas', 'search']" /> 發現地: {{animal_foundplace}}</b-list-group-item>
             <b-list-group-item variant="warning"><font-awesome-icon :icon="['fas', 'home']" /> 所屬收容所: <br><br/>{{shelter_name}}</b-list-group-item>
-            <b-list-group-item variant="success"><font-awesome-icon :icon="['fas', 'thumbtack']" /> 收容所地址: {{shelter_address}}</b-list-group-item>
+            <b-list-group-item variant="success"><font-awesome-icon :icon="['fas', 'thumbtack']" /> 收容所地址: <br><br/>{{shelter_address}}</b-list-group-item>
             <b-list-group-item variant="danger"><font-awesome-icon :icon="['fas', 'phone-alt']" /> 收容所電話: {{shelter_tel}}</b-list-group-item>
             <b-list-group-item variant="info"><font-awesome-icon :icon="['fas', 'comment-dots']" /> 備註: {{animal_remark}}</b-list-group-item>
           </b-list-group>
+          <a href="tel:0981601743">Call me!</a>
         </div>
       </b-row>
     </div>
