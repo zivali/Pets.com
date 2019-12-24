@@ -1,4 +1,5 @@
 <template>
+<div>
   <div>
     <b-navbar class="navbar-static-top" toggleable="lg" type="dark" variant="info">
       <b-container>
@@ -21,13 +22,16 @@
         </b-collapse>
       </b-container>
     </b-navbar>
-    <!-- filter section -->
-    <router-view />
   </div>
+
+  <!-- filter section -->
+  <router-view/>
+  
+</div>
 </template>
 <script>
 export default {};
 </script>
-<style>
-@import "./css/Navbar.css";
+<style lang="scss" scoped>
+  @import "../css/Navbar.scss";
 </style>

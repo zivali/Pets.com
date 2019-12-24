@@ -37,5 +37,5 @@
 
 
 <style>
-@import "./css/about.css"
+/* @import "./css/about.scss" */
 </style>

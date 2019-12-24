@@ -1,15 +1,15 @@
 <template>
   <div class="container bg">
     <div class="row justify-content-center my-5">
-      <b-row>
-        <div></div>
+      <b-row class="topdown">
         <!-- animal-image -->
-        <div class="col-md-5 order-md-1 text-center">
-          <!-- <img :src="pet[0].album_file" class="rounded shadow" alt />-->
-          <b-card class="mt-4 single" :img-src="pet[0].album_file" imgtop style="max-width: 50rem;"></b-card>
+        <div class="col-md-5 text-center mt-4">
+          <b-card style="max-width: 50rem;">
+            <b-img :src="pet[0].album_file" fluid alt="Responsive image"></b-img>
+          </b-card>
         </div>
         <!-- animal description text -->
-        <div class="col-md-3 order-md-2 mt-3">
+        <div class="col-md-3 order-md-2">
           <span class="h5">動物資訊</span>
           <b-list-group class="h6">
             <b-list-group-item variant="success">
@@ -44,7 +44,7 @@
           </b-list-group>
         </div>
         <!-- location description text -->
-        <div class="col-md-4 order-md-3 mt-3">
+        <div class="col-md-4 order-md-3">
           <span class="h5">帶他回家</span>
           <b-list-group class="h6">
             <b-list-group-item variant="info">
@@ -63,7 +63,7 @@
               收容所地址:
               <br />
               <br />
-              {{shelter_address}}
+              <a id="shelterAdd" href= "google_map" target="_blank" @click="google_map">{{shelter_address}}</a>
             </b-list-group-item>
             <b-list-group-item variant="danger">
               <font-awesome-icon :icon="['fas', 'phone-alt']" />
@@ -208,10 +208,15 @@ export default {
       return ele;
       // eslint-disable-next-line
       console.log(ele.href);    
+      },
+      google_map: function(){
+      let ele = document.getElementById('shelterAdd');
+      ele.href = 'https://www.google.com/maps/place/:' + this.pet[0].shelter_address;
+      return ele;
       }
   }
 };
 </script>
 <style>
-@import "./css/SingleAnimal.css";
+@import "../css/SingleAnimal.scss";
 </style>

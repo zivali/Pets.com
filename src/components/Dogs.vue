@@ -85,6 +85,6 @@ export default {
   }
 };
 </script>
-<style>
-@import "./css/card.css";
+<style lang="scss" scoped>
+@import "../css/card.scss";
 </style>

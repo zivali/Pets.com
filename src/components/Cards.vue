@@ -2,11 +2,11 @@
   <div class="container-fluid body">
     <b-container>
       <div>
-        <b-card-group deck class="mt-4">
+        <b-card-group deck class="mt-5">
           <!--所有card都在同一個card deck-->
           <div v-bind:key="index" v-for="(data, index) in pets">
             <b-card
-              class="card col-auto text-center mb-3 hovereffect shadow"
+              class="allcard col-auto text-center mb-3 hovereffect shadow"
               style="width: 20rem;"
               img
               img-fluid
@@ -68,7 +68,7 @@ let api =
 export default {
   methods: {
     //infinite loading
-    infiniteHandler($state) {
+    infiniteHandler: function($state) {
       let key = "&$top=" + this.top + "&$skip=" + this.skip; //query params
       axios.get(api + key).then(response => {
         if (response.data) {
@@ -106,6 +106,6 @@ export default {
   }*/
 };
 </script>
-<style>
-@import "./css/card.css";
+<style lang="scss" scoped>
+@import "../css/card.scss";
 </style>

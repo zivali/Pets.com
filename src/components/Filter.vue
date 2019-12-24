@@ -1,7 +1,7 @@
 <template>
 <b-container>
   <div>
-    <b-row class="ml-4">
+    <b-row class="ml-5">
       <b-col md="2">
         <div>體型</div>
         <b-form-select v-model="sizeSelected" :options="sizeOptions"></b-form-select>
@@ -66,6 +66,6 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+@import "../css/Filter.scss";
 </style>
