@@ -1,8 +1,10 @@
   <template>
   <div class="container-fluid body">
+    <filter-sec @filterParam="reload($event)"></filter-sec>
+    <!-- <div :key='reloadKey'>{{reloadKey}}</div> -->
     <b-container>
       <div>
-        <b-card-group deck class="mt-5">
+        <b-card-group deck class="mt-5" >
           <!--所有card都在同一個card deck-->
           <div v-bind:key="index" v-for="(data, index) in pets">
             <b-card
@@ -55,55 +57,63 @@
         </b-card-group>
       </div>
     </b-container>
-    <infinite-loading @infinite="infiniteHandler"></infinite-loading>
+    <infinite-loading spinner="circles" @infinite="infiniteHandler" :identifier="reloadKey"></infinite-loading>
     
   </div>
 </template>
     
 <script>
 import axios from "axios";
+import Filter from '../components/Filter.vue'
+
 let api =
   "https://cors-anywhere.herokuapp.com/http://data.coa.gov.tw/Service/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL";
 
 export default {
+  components: {
+      'filter-sec': Filter,
+  },
   methods: {
     //infinite loading
-    infiniteHandler: function($state) {
-      let key = "&$top=" + this.top + "&$skip=" + this.skip; //query params
+    infiniteHandler($state) {
+      let key = "&$top=" + this.top + "&$skip=" + this.skip + this.query; //query params
       axios.get(api + key).then(response => {
         if (response.data) {
           this.pets = this.pets.concat(response.data);
-          /*test
+          //test
           // eslint-disable-next-line no-console
-          console.log(this.pets);*/
+          console.log(this.pets);
           this.skip += 20;  //keep on loading 20 more
           $state.loaded();
         } else {
           $state.complete();
         }
       });
+    },
+    reload(params){
+      this.reloadKey += 1;
+      this.query = params;
+      this.pets = [];
+      this.skip = 0;
+      // eslint-disable-next-line no-console
+      console.log(this.query, this.reloadKey);
     }
   },
   data() {
     return {
       pets: [],
       top: 20,
-      skip: 0
+      skip: 0,
+      query: '',
+      reloadKey: +new Date(),
     };
   },
   computed:{
     animal_place: function() {
       return this.pet.animal_place.slice(0,3);
     },
-  }
-  /*mounted() {
-    let key = "&$top=" + top + "&$skip=" + skip;
+  },
 
-    axios.get(api + key).then(response => {
-      // JSON responses are automatically parsed.
-      this.pets = response.data;
-    });
-  }*/
 };
 </script>
 <style lang="scss" scoped>

@@ -4,7 +4,7 @@
     <b-row class="ml-5">
       <b-col md="2">
         <div>體型</div>
-        <b-form-select v-model="sizeSelected" :options="sizeOptions"></b-form-select>
+        <b-form-select v-model="sizeSelected" :options="sizeOptions" :change="filter"></b-form-select>
       </b-col>
       <b-col md="2">
         <div>性別</div>
@@ -16,7 +16,7 @@
       </b-col>
       <b-col md="2">
         <div>所在地</div>
-        <b-form-select v-model="locationSelected" :options="location"></b-form-select>
+        <b-form-select v-model="locationSelected" :options="locationOptions"></b-form-select>
       </b-col>
     </b-row>
     <!--Cards-->
@@ -25,6 +25,7 @@
   </b-container>
 </template>
 <script>
+
 export default {
   data(){
     return{
@@ -33,34 +34,72 @@ export default {
       ageSelected: null,
       locationSelected: null,
       sizeOptions:[
-        { value: null, text: '全部' },
-        { value: 'SMALL', text: '小型' },
-        { value: 'MEDIUM', text: '中型' },
-        { value: 'BIG', text: '大型' },
+        { value: null, text: '全部',  param: '' },
+        { value: 'SMALL', text: '小型', param: '&animal_bodytype=SMALL'},
+        { value: 'MEDIUM', text: '中型', param: '&animal_bodytype=MEDIUM'},
+        { value: 'BIG', text: '大型', param: '&animal_bodytype=BIG'},
       ],
       sexOptions:[
-        { value: null, text: '全部' },
-        { value: 'F', text: '女生'},
-        { value: 'M', text: '男生'}
+        { value: null, text: '全部', param: '' },
+        { value: 'F', text: '女生', param: '&animal_sex=F'},
+        { value: 'M', text: '男生', param: '&animal_sex=M'}
       ],
       ageOptions:[
-        { value: null, text: '全部' },
-        { value: 'CHILD', text: '幼年' },
-        { value: 'ADULT', text: '成年' },
+        { value: null, text: '全部', param: '' },
+        { value: 'CHILD', text: '幼年', param: '&animal_age=CHILD' },
+        { value: 'ADULT', text: '成年', param: '&animal_age=ADULT' },
       ],
       locationId: [null, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
       locationArr:[
         '全台', '臺北市', '新北市', '基隆市', '宜蘭縣', '桃園縣', '新竹縣', '新竹市', '苗栗縣', '臺中市', '彰化縣', '南投縣', '雲林縣', '嘉義縣', '嘉義市', '臺南市', '高雄市', '屏東縣', '花蓮縣', '臺東縣', '澎湖縣', '金門縣', '連江縣'
       ],
+      
     }
   },
   computed: {
-    location(){
+    locationParam(){
+      let location = ['', 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
+      for (var j=0; j<location.length; j++){
+        if (typeof location[j] == 'number'){
+          location[j] = '&animal_area_pkid='+location[j]
+        }
+      }
+      return location;
+    },
+    locationOptions(){
       let place =[];
       for(var i=0; i<this.locationId.length; i++){
-        place.push({value: this.locationId[i], text: this.locationArr[i]})
+        place.push({ value: this.locationId[i], text: this.locationArr[i], param: this.locationParam[i]})
       }
       return place;
+    },
+    filter(){
+      let params = '';
+      //size
+      for (var x=0; x<this.sizeOptions.length; x++){
+        if (this.sizeSelected === this.sizeOptions[x].value){
+          params = params.concat(this.sizeOptions[x].param);
+        }
+      }
+      //sex
+      for (var y=0; y<this.sexOptions.length; y++){
+        if (this.sexSelected === this.sexOptions[y].value){
+          params = params.concat(this.sexOptions[y].param);
+        }
+      }
+      //age
+      for (var z=0; z<this.ageOptions.length; z++){
+        if (this.ageSelected === this.ageOptions[z].value){
+          params = params.concat(this.ageOptions[z].param);
+        }
+      }
+      location
+      for (var a=0; a<this.locationOptions.length; a++){
+        if (this.locationSelected === this.locationOptions[a].value){
+          params = params.concat(this.locationOptions[a].param);
+        }
+      }
+      this.$emit('filterParam', params);
     }
   }
 }

@@ -24,7 +24,7 @@
     </b-navbar>
   </div>
 
-  <!-- filter section -->
+  <!-- info section -->
   <router-view/>
   
 </div>

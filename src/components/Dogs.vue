@@ -1,5 +1,6 @@
   <template>
   <div class="container-fluid body">
+    <filter-sec @filterParam="reload($event)"></filter-sec>
     <b-container>
       <div>
         <b-card-group deck class="mt-4">
@@ -50,21 +51,26 @@
         </b-card-group>
       </div>
     </b-container>
-    <infinite-loading @infinite="infiniteHandler"></infinite-loading>
+    <infinite-loading @infinite="infiniteHandler" :identifier="reloadKey"></infinite-loading>
     
   </div>
 </template>
     
 <script>
 import axios from "axios";
+import Filter from '../components/Filter.vue';
+
 let api =
   "https://cors-anywhere.herokuapp.com/http://data.coa.gov.tw/Service/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL";
 
 export default {
+  components: {
+      'filter-sec': Filter,
+  },
   methods: {
     //infinite loading
     infiniteHandler($state) {  
-      let key = "&$top=" + this.top + "&$skip=" + this.skip + "&animal_kind=狗"; //query params
+      let key = "&$top=" + this.top + "&$skip=" + this.skip + "&animal_kind=狗" + this.query; //query params
       axios.get(api + key).then(response => {
         if (response.data) {
           this.pets = this.pets.concat(response.data);
@@ -74,13 +80,23 @@ export default {
           $state.complete();
         }
       });
+    },
+    reload(params){
+      this.reloadKey += 1;
+      this.query = params;
+      this.pets = [];
+      this.skip = 0;
+      // eslint-disable-next-line no-console
+      console.log(this.query, this.reloadKey);
     }
   },
   data() {
     return {
       pets: [],
       top: 20,
-      skip: 0
+      skip: 0,
+      query: '',
+      reloadKey: +new Date()
     };
   }
 };
