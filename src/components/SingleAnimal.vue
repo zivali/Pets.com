@@ -5,7 +5,7 @@
         <!-- animal-image -->
         <div class="col-md-5 order-md-1 text-center mt-4">
           <b-card style="max-width: 50rem;">
-            <b-img :src="this.pet[0].album_file" fluid alt="Responsive image"></b-img>
+            <b-img :src="this.pet[0].album_file" fluid-grow alt="Fluid-grow image"></b-img>
           </b-card>
         </div>
         <!-- animal description text -->

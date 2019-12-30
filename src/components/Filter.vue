@@ -2,29 +2,32 @@
 <b-container>
   <div>
     <b-row>
-      <b-col md="2">
+      <b-col>
         <div>體型</div>
         <b-form-select v-model="sizeSelected" :options="sizeOptions" :change="filter"></b-form-select>
       </b-col>
-      <b-col md="2">
+      <b-col>
         <div>性別</div>
         <b-form-select v-model="sexSelected" :options="sexOptions"></b-form-select>
       </b-col>
-      <b-col md="2">
+      <b-col>
         <div>年齡</div>
         <b-form-select v-model="ageSelected" :options="ageOptions"></b-form-select>
       </b-col>
-      <b-col md="2">
+      <b-col>
         <div>所在地</div>
         <b-form-select v-model="locationSelected" :options="locationOptions"></b-form-select>
       </b-col>
-      <b-col md="2">
+      <b-col >
         <div>絕育</div>
         <b-form-select v-model="sterilizationSelected" :options="sterilizationOptions"></b-form-select>
       </b-col>
-      <b-col md="2">
+      <b-col>
         <div>施打狂犬疫苗</div>
         <b-form-select v-model="bacterinSelected" :options="bacterinOptions"></b-form-select>
+      </b-col>
+      <b-col align-self="end">
+        <b-button variant="warning" @click="reset">重設條件</b-button>
       </b-col>
     </b-row>
   </div>
@@ -129,6 +132,16 @@ export default {
         }
       }
       this.$emit('filterParam', params);
+    }
+  },
+  methods:{
+    reset(){
+      this.sizeSelected = null;
+      this.sexSelected = null;
+      this.ageSelected = null;
+      this.locationSelected = null;
+      this.sterilizationSelected = null;
+      this.bacterinSelected = null;
     }
   }
 }

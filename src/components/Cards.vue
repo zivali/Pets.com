@@ -86,9 +86,6 @@ export default {
       axios.get(api + key).then(response => {
         if (response.data.length>0) {
           this.pets = this.pets.concat(response.data);
-          //test
-          // eslint-disable-next-line no-console
-          console.log(this.pets);
           this.skip += 20;  //keep on loading 20 more
           $state.loaded();
         } else {
@@ -101,8 +98,8 @@ export default {
       this.query = params;
       this.pets = [];
       this.skip = 0;
-      // eslint-disable-next-line no-console
-      console.log(this.query, this.reloadKey);
+      // // eslint-disable-next-line no-console
+      // console.log(this.query, this.reloadKey);
     }
   },
   data() {
