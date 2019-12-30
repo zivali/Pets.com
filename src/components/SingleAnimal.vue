@@ -4,7 +4,7 @@
       <b-row class="mtop">
         <b-row class="d-none d-md-block">
           <b-col>
-            <b-button variant="secondary" @click="$router.go(-1)">
+            <b-button pill variant="outline-secondary" @click="$router.go(-1)">
               <font-awesome-icon :icon="['fas', 'angle-left']" />
               返回
             </b-button>

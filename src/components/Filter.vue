@@ -23,11 +23,11 @@
         <b-form-select v-model="sterilizationSelected" :options="sterilizationOptions"></b-form-select>
       </b-col>
       <b-col>
-        <div>施打狂犬疫苗</div>
+        <div>狂犬疫苗</div>
         <b-form-select v-model="bacterinSelected" :options="bacterinOptions"></b-form-select>
       </b-col>
       <b-col align-self="end">
-        <b-button variant="warning" @click="reset">重設條件</b-button>
+        <b-button variant="warning" @click="reset">重設</b-button>
       </b-col>
     </b-row>
   </div>
@@ -71,8 +71,8 @@ export default {
       ],
       bacterinOptions:[
         { value: null, text: '全部', param: '' },
-        { value: 'T', text: '是', param: '&animal_bacterin=T' },
-        { value: 'F', text: '否', param: '&animal_bacterin=F' },
+        { value: 'T', text: '已施打', param: '&animal_bacterin=T' },
+        { value: 'F', text: '未施打', param: '&animal_bacterin=F' },
       ]
     }
   },
@@ -132,6 +132,7 @@ export default {
         }
       }
       this.$emit('filterParam', params);
+      return params;
     }
   },
   methods:{
