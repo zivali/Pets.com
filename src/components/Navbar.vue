@@ -3,7 +3,7 @@
   <b-row>
     <b-navbar class="navbar-static-top" toggleable="lg" type="dark" variant="info" fixed="top">
       <b-container>
-        <router-link class="navbar-brand" to="/">Pets.com (施工中...)</router-link>
+        <router-link class="navbar-brand" to="/">Pets.com</router-link>
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>

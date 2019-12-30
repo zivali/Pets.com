@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="ml-5 mr-5">
+    <div class="mtop ml-5 mr-5">
       <h3 class="mt-4">關於Pets.com</h3>
       <h5 class="mt-5 line-height">
         Pets.com 是一個提倡領養代替購買的網站，本網站上的動物資訊使用 <a href="https://data.gov.tw/">Data.gov.tw(臺灣政府資料開放平台)</a>上，行政部農業委員會提供的開源資料。
@@ -37,5 +37,5 @@
 
 
 <style>
-/* @import "./css/about.scss" */
+@import "../css/about.scss"
 </style>
