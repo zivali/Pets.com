@@ -66,7 +66,7 @@
         </b-card-group>
       </b-row>
     </b-container>
-    <infinite-loading spinner="circles" @infinite="infiniteHandler" :identifier="reloadKey">
+    <infinite-loading :distance="distance" spinner="circles" @infinite="infiniteHandler" :identifier="reloadKey">
       <div slot="no-results">
         <font-awesome-icon :icon="['fas', 'paw']" />沒有您所選擇的寵物待領養 : )
       </div>
@@ -117,7 +117,8 @@ export default {
       top: 20,
       skip: 0,
       query: "",
-      reloadKey: +new Date()
+      reloadKey: +new Date(),
+      distance: 500
     };
   },
   computed: {
