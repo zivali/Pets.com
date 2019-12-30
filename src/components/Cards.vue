@@ -5,7 +5,7 @@
         <filter-sec @filterParam="reload($event)"></filter-sec>
       </b-row>
       <b-row>
-        <b-card-group deck class="mt-5 ml-2" >
+        <b-card-group deck class="mt-5 ml-3" >
           <!--所有card都在同一個card deck-->
           <div v-bind:key="index" v-for="(data, index) in pets">
             <b-card
@@ -20,7 +20,7 @@
               :img-src="data.album_file"
             >
               <div class="overlay">
-                <router-link class="info" :to="`/animal/${data.animal_id}`">帶我回家</router-link>
+                <router-link class="info" :to="{ path: `/animal/${data.animal_id}`}">帶我回家</router-link>
               </div>
 
               <!--
@@ -61,6 +61,8 @@
     <infinite-loading spinner="circles" @infinite="infiniteHandler" :identifier="reloadKey">
       <div slot="no-results">
         <font-awesome-icon :icon="['fas', 'paw']" /> 沒有您所選擇的寵物待領養 : )</div>
+      <div slot="no-more">
+        <font-awesome-icon :icon="['fas', 'paw']" /> 已列出所有寵物</div>
     </infinite-loading>
     
   </div>

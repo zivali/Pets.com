@@ -56,6 +56,8 @@
     <infinite-loading spinner="circles" @infinite="infiniteHandler" :identifier="reloadKey">
       <div slot="no-results">
         <font-awesome-icon :icon="['fas', 'paw']" /> 沒有您所選擇的寵物待領養 : )</div>
+      <div slot="no-more">
+        <font-awesome-icon :icon="['fas', 'paw']" /> 已列出所有寵物</div>
     </infinite-loading>
     
   </div>

@@ -27,8 +27,6 @@
         <b-form-select v-model="bacterinSelected" :options="bacterinOptions"></b-form-select>
       </b-col>
     </b-row>
-    <!--Cards-->
-    <router-view />
   </div>
   </b-container>
 </template>

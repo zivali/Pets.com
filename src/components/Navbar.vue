@@ -24,10 +24,10 @@
     </b-navbar>
   </b-row>
 
-  <b-row>
+  <keep-alive>
     <!-- info section -->
-    <router-view class="mtop"/>
-  </b-row>
+    <router-view class="mtop" :key="$route.fullPath"/>
+  </keep-alive>
    
 </b-container>
 </template>

@@ -1,9 +1,9 @@
 <template>
   <div class="container bg">
     <div class="row justify-content-center my-5">
-      <b-row>
+      <b-row class="mtop">
         <!-- animal-image -->
-        <div class="col-md-5 text-center mt-4">
+        <div class="col-md-5 order-md-1 text-center mt-4">
           <b-card style="max-width: 50rem;">
             <b-img :src="this.pet[0].album_file" fluid alt="Responsive image"></b-img>
           </b-card>
@@ -17,7 +17,8 @@
               編號: {{animal_id}}
             </b-list-group-item>
             <b-list-group-item variant="info">
-              <font-awesome-icon :icon="['fas', 'star']" />區域編號:
+              <font-awesome-icon :icon="['fas', 'star']" />
+              區域編號:
               <br />
               <br />
               {{animal_subid}}
@@ -27,13 +28,15 @@
               性別: {{animal_sex}}
             </b-list-group-item>
             <b-list-group-item variant="warning">
-              <font-awesome-icon :icon="['fas', 'paw']" />體態:
+              <font-awesome-icon :icon="['fas', 'paw']" />
+              體態:
               <br />
               <br />
               {{animal_bodytype}}, {{animal_age}}, {{animal_colour}}
             </b-list-group-item>
             <b-list-group-item variant="warning">
-              <font-awesome-icon :icon="['fas', 'briefcase-medical']" />醫療:
+              <font-awesome-icon :icon="['fas', 'briefcase-medical']" />
+              醫療:
               <br />
               <br />
               {{animal_sterilization}}, {{animal_bacterin}}
@@ -49,18 +52,20 @@
               發現地: {{animal_foundplace}}
             </b-list-group-item>
             <b-list-group-item variant="info">
-              <font-awesome-icon :icon="['fas', 'thumbtack']" />收容所地址:
+              <font-awesome-icon :icon="['fas', 'thumbtack']" />
+              收容所地址:
               <br />
               <br />
               {{shelter_address}}
             </b-list-group-item>
             <b-list-group-item variant="warning">
-              <font-awesome-icon :icon="['fas', 'home']" />所屬收容所:
+              <font-awesome-icon :icon="['fas', 'home']" />
+              所屬收容所:
               {{shelter_name}}
               <br />
               <br />
               <iframe
-                width="300"
+                width="col-md-5"
                 height="300"
                 frameborder="0"
                 style="border:0"
@@ -69,11 +74,13 @@
               ></iframe>
             </b-list-group-item>
             <b-list-group-item variant="warning">
-              <font-awesome-icon :icon="['fas', 'phone-alt']" />收容所電話:
+              <font-awesome-icon :icon="['fas', 'phone-alt']" />
+              收容所電話:
               <a id="shelterTel" href="tel" @click="telephone">{{shelter_tel}}</a>
             </b-list-group-item>
             <b-list-group-item variant="info">
-              <font-awesome-icon :icon="['fas', 'comment-dots']" />備註:
+              <font-awesome-icon :icon="['fas', 'comment-dots']" />
+              備註:
               <br />
               <br />
               {{animal_remark}}
