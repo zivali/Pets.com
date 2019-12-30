@@ -1,10 +1,11 @@
   <template>
-  <div class="container-fluid body">
-    <filter-sec @filterParam="reload($event)"></filter-sec>
-    <!-- <div :key='reloadKey'>{{reloadKey}}</div> -->
+  <div class="container-fluid">
     <b-container>
-      <div>
-        <b-card-group deck class="mt-5" >
+      <b-row>
+        <filter-sec @filterParam="reload($event)"></filter-sec>
+      </b-row>
+      <b-row>
+        <b-card-group deck class="mt-5 ml-2" >
           <!--所有card都在同一個card deck-->
           <div v-bind:key="index" v-for="(data, index) in pets">
             <b-card
@@ -55,9 +56,12 @@
             </b-card>
           </div>
         </b-card-group>
-      </div>
+      </b-row>
     </b-container>
-    <infinite-loading spinner="circles" @infinite="infiniteHandler" :identifier="reloadKey"></infinite-loading>
+    <infinite-loading spinner="circles" @infinite="infiniteHandler" :identifier="reloadKey">
+      <div slot="no-results">
+        <font-awesome-icon :icon="['fas', 'paw']" /> 沒有您所選擇的寵物待領養 : )</div>
+    </infinite-loading>
     
   </div>
 </template>
@@ -78,7 +82,7 @@ export default {
     infiniteHandler($state) {
       let key = "&$top=" + this.top + "&$skip=" + this.skip + this.query; //query params
       axios.get(api + key).then(response => {
-        if (response.data) {
+        if (response.data.length>0) {
           this.pets = this.pets.concat(response.data);
           //test
           // eslint-disable-next-line no-console

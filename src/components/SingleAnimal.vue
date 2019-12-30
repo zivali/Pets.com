@@ -52,18 +52,18 @@
               發現地: {{animal_foundplace}}
             </b-list-group-item>
             <b-list-group-item variant="info">
-              <font-awesome-icon :icon="['fas', 'home']" />
-              所屬收容所:
-              <br />
-              <br />
-              {{shelter_name}}
-            </b-list-group-item>
-            <b-list-group-item variant="warning">
               <font-awesome-icon :icon="['fas', 'thumbtack']" />
               收容所地址:
               <br />
               <br />
-              <a id="shelterAdd" href= "google_map" target="_blank" @click="google_map">{{shelter_address}}</a>
+              {{shelter_address}}
+            </b-list-group-item>
+            <b-list-group-item variant="warning">
+              <font-awesome-icon :icon="['fas', 'home']" />
+              所屬收容所:
+              <br />
+              <br />
+              <a id="shelterAdd" href= "google_map" target="_blank" @click="google_map">{{shelter_name}}</a>
             </b-list-group-item>
             <b-list-group-item variant="warning">
               <font-awesome-icon :icon="['fas', 'phone-alt']" />

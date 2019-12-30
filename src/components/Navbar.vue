@@ -1,7 +1,7 @@
 <template>
-<div>
-  <div>
-    <b-navbar class="navbar-static-top" toggleable="lg" type="dark" variant="info">
+<b-container>
+  <b-row>
+    <b-navbar class="navbar-static-top" toggleable="lg" type="dark" variant="info" fixed="top">
       <b-container>
         <router-link class="navbar-brand" to="/">Pets.com (施工中...)</router-link>
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -22,12 +22,14 @@
         </b-collapse>
       </b-container>
     </b-navbar>
-  </div>
+  </b-row>
 
-  <!-- info section -->
-  <router-view/>
-  
-</div>
+  <b-row>
+    <!-- info section -->
+    <router-view class="mtop"/>
+  </b-row>
+   
+</b-container>
 </template>
 <script>
 export default {};

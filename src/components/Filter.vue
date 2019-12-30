@@ -1,7 +1,7 @@
 <template>
 <b-container>
   <div>
-    <b-row class="ml-5">
+    <b-row>
       <b-col md="2">
         <div>體型</div>
         <b-form-select v-model="sizeSelected" :options="sizeOptions" :change="filter"></b-form-select>
@@ -18,6 +18,14 @@
         <div>所在地</div>
         <b-form-select v-model="locationSelected" :options="locationOptions"></b-form-select>
       </b-col>
+      <b-col md="2">
+        <div>絕育</div>
+        <b-form-select v-model="sterilizationSelected" :options="sterilizationOptions"></b-form-select>
+      </b-col>
+      <b-col md="2">
+        <div>施打狂犬疫苗</div>
+        <b-form-select v-model="bacterinSelected" :options="bacterinOptions"></b-form-select>
+      </b-col>
     </b-row>
     <!--Cards-->
     <router-view />
@@ -33,6 +41,8 @@ export default {
       sexSelected: null,
       ageSelected: null,
       locationSelected: null,
+      sterilizationSelected: null,
+      bacterinSelected: null,
       sizeOptions:[
         { value: null, text: '全部',  param: '' },
         { value: 'SMALL', text: '小型', param: '&animal_bodytype=SMALL'},
@@ -53,7 +63,16 @@ export default {
       locationArr:[
         '全台', '臺北市', '新北市', '基隆市', '宜蘭縣', '桃園縣', '新竹縣', '新竹市', '苗栗縣', '臺中市', '彰化縣', '南投縣', '雲林縣', '嘉義縣', '嘉義市', '臺南市', '高雄市', '屏東縣', '花蓮縣', '臺東縣', '澎湖縣', '金門縣', '連江縣'
       ],
-      
+      sterilizationOptions:[
+        { value: null, text: '全部', param: '' },
+        { value: 'T', text: '是', param: '&animal_sterilization=T' },
+        { value: 'F', text: '否', param: '&animal_sterilization=F' },
+      ],
+      bacterinOptions:[
+        { value: null, text: '全部', param: '' },
+        { value: 'T', text: '是', param: '&animal_bacterin=T' },
+        { value: 'F', text: '否', param: '&animal_bacterin=F' },
+      ]
     }
   },
   computed: {
@@ -93,10 +112,22 @@ export default {
           params = params.concat(this.ageOptions[z].param);
         }
       }
-      location
+      //location
       for (var a=0; a<this.locationOptions.length; a++){
         if (this.locationSelected === this.locationOptions[a].value){
           params = params.concat(this.locationOptions[a].param);
+        }
+      }
+      //sterilization
+      for (var b=0; b<this.sterilizationOptions.length; b++){
+        if (this.sterilizationSelected === this.sterilizationOptions[b].value){
+          params = params.concat(this.sterilizationOptions[b].param);
+        }
+      }
+      //bacterin
+      for (var c=0; c<this.bacterinOptions.length; c++){
+        if (this.bacterinSelected === this.bacterinOptions[c].value){
+          params = params.concat(this.bacterinOptions[c].param);
         }
       }
       this.$emit('filterParam', params);
