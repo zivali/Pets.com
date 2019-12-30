@@ -31,7 +31,8 @@
               <!--sex-->
               <div>
                 <span class="detail-text --title">
-                  <font-awesome-icon :icon="['fas', 'paw']" />性別
+                  <font-awesome-icon :icon="['fas', 'paw']" />
+                  性別
                 </span>
                 <span class="detail-text" v-if="data.animal_sex == 'M'">男生</span>
                 <span class="detail-text" v-else-if="data.animal_sex == 'F'">女生</span>
@@ -40,7 +41,8 @@
               <!--size-->
               <div>
                 <span class="detail-text --title">
-                  <font-awesome-icon :icon="['fas', 'paw']" />體型
+                  <font-awesome-icon :icon="['fas', 'paw']" />
+                  體型
                 </span>
                 <span class="detail-text" v-if="data.animal_bodytype == 'SMALL'">小型</span>
                 <span class="detail-text" v-else-if="data.animal_bodytype == 'MEDIUM'">中型</span>
@@ -49,7 +51,8 @@
               <!--location-->
               <div>
                 <span class="detail-text --title">
-                  <font-awesome-icon :icon="['fas', 'paw']" />所在地
+                  <font-awesome-icon :icon="['fas', 'paw']" />
+                  所在地
                 </span>
                 <span class="detail-text">{{data.animal_place.slice(0,3)}}</span>
               </div>
