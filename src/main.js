@@ -8,10 +8,10 @@ Vue.use(BootstrapVue)
 //fontawesome Icon
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faAngleUp, faSpinner, faPaw, faBriefcaseMedical, faSearch, faThumbtack, faHome, faPhoneAlt, faCommentDots, faVenusMars, faTag, faStar} from '@fortawesome/free-solid-svg-icons'
+import { faAngleLeft, faAngleUp, faSpinner, faPaw, faBriefcaseMedical, faSearch, faThumbtack, faHome, faPhoneAlt, faCommentDots, faVenusMars, faTag, faStar} from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 Vue.component('font-awesome-icon', FontAwesomeIcon)
-library.add(faAngleUp, faSpinner, faPaw, faGithub, faBriefcaseMedical, faSearch, faThumbtack, faHome, faPhoneAlt, faCommentDots, faVenusMars, faTag, faStar)
+library.add(faAngleLeft, faAngleUp, faSpinner, faPaw, faGithub, faBriefcaseMedical, faSearch, faThumbtack, faHome, faPhoneAlt, faCommentDots, faVenusMars, faTag, faStar)
 
 //back to top
 import BackToTop from 'vue-backtotop'

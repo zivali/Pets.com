@@ -2,91 +2,100 @@
   <div class="container bg">
     <div class="row justify-content-center my-5">
       <b-row class="mtop">
-        <!-- animal-image -->
-        <div class="col-md-5 order-md-1 text-center mt-4">
-          <b-card style="max-width: 50rem;">
-            <b-img :src="this.pet[0].album_file" fluid-grow alt="Fluid-grow image"></b-img>
-          </b-card>
-        </div>
-        <!-- animal description text -->
-        <div class="col-md-3 order-md-2">
-          <span class="h5">動物資訊</span>
-          <b-list-group class="h6">
-            <b-list-group-item variant="info">
-              <font-awesome-icon :icon="['fas', 'tag']" />
-              編號: {{animal_id}}
-            </b-list-group-item>
-            <b-list-group-item variant="info">
-              <font-awesome-icon :icon="['fas', 'star']" />
-              區域編號:
-              <br />
-              <br />
-              {{animal_subid}}
-            </b-list-group-item>
-            <b-list-group-item variant="warning">
-              <font-awesome-icon :icon="['fas', 'venus-mars']" />
-              性別: {{animal_sex}}
-            </b-list-group-item>
-            <b-list-group-item variant="warning">
-              <font-awesome-icon :icon="['fas', 'paw']" />
-              體態:
-              <br />
-              <br />
-              {{animal_bodytype}}, {{animal_age}}, {{animal_colour}}
-            </b-list-group-item>
-            <b-list-group-item variant="warning">
-              <font-awesome-icon :icon="['fas', 'briefcase-medical']" />
-              醫療:
-              <br />
-              <br />
-              {{animal_sterilization}}, {{animal_bacterin}}
-            </b-list-group-item>
-          </b-list-group>
-        </div>
-        <!-- location description text -->
-        <div class="col-md-4 order-md-3">
-          <span class="h5">帶他回家</span>
-          <b-list-group class="h6">
-            <b-list-group-item variant="info">
-              <font-awesome-icon :icon="['fas', 'search']" />
-              發現地: {{animal_foundplace}}
-            </b-list-group-item>
-            <b-list-group-item variant="info">
-              <font-awesome-icon :icon="['fas', 'thumbtack']" />
-              收容所地址:
-              <br />
-              <br />
-              {{shelter_address}}
-            </b-list-group-item>
-            <b-list-group-item variant="warning">
-              <font-awesome-icon :icon="['fas', 'home']" />
-              所屬收容所:
-              {{shelter_name}}
-              <br />
-              <br />
-              <iframe
-                width="col-md-5"
-                height="300"
-                frameborder="0"
-                style="border:0"
-                :src= "google_map"
-                allowfullscreen
-              ></iframe>
-            </b-list-group-item>
-            <b-list-group-item variant="warning">
-              <font-awesome-icon :icon="['fas', 'phone-alt']" />
-              收容所電話:
-              <a id="shelterTel" href="tel" @click="telephone">{{shelter_tel}}</a>
-            </b-list-group-item>
-            <b-list-group-item variant="info">
-              <font-awesome-icon :icon="['fas', 'comment-dots']" />
-              備註:
-              <br />
-              <br />
-              {{animal_remark}}
-            </b-list-group-item>
-          </b-list-group>
-        </div>
+        <b-row class="d-none d-md-block">
+          <b-col>
+            <b-button variant="secondary" @click="$router.go(-1)">
+              <font-awesome-icon :icon="['fas', 'angle-left']" />
+              返回
+            </b-button>
+          </b-col>
+        </b-row>
+        <b-row>
+          <!-- animal-image -->
+          <div class="col-md-5 order-md-1 text-center mt-4">
+            <b-card style="max-width: 50rem;">
+              <b-img :src="this.pet[0].album_file" fluid-grow alt="Fluid-grow image"></b-img>
+            </b-card>
+          </div>
+          <!-- animal description text -->
+          <div class="col-md-3 order-md-2">
+            <span class="h5">動物資訊</span>
+            <b-list-group class="h6">
+              <b-list-group-item variant="info">
+                <font-awesome-icon :icon="['fas', 'tag']" />
+                編號: {{animal_id}}
+              </b-list-group-item>
+              <b-list-group-item variant="info">
+                <font-awesome-icon :icon="['fas', 'star']" />
+                區域編號:
+                <br />
+                <br />
+                {{animal_subid}}
+              </b-list-group-item>
+              <b-list-group-item variant="warning">
+                <font-awesome-icon :icon="['fas', 'venus-mars']" />
+                性別: {{animal_sex}}
+              </b-list-group-item>
+              <b-list-group-item variant="warning">
+                <font-awesome-icon :icon="['fas', 'paw']" />
+                體態:
+                <br />
+                <br />
+                {{animal_bodytype}}, {{animal_age}}, {{animal_colour}}
+              </b-list-group-item>
+              <b-list-group-item variant="warning">
+                <font-awesome-icon :icon="['fas', 'briefcase-medical']" />
+                醫療:
+                <br />
+                <br />
+                {{animal_sterilization}}, {{animal_bacterin}}
+              </b-list-group-item>
+            </b-list-group>
+          </div>
+          <!-- location description text -->
+          <div class="col-md-4 order-md-3">
+            <span class="h5">帶他回家</span>
+            <b-list-group class="h6">
+              <b-list-group-item variant="info">
+                <font-awesome-icon :icon="['fas', 'search']" />
+                發現地: {{animal_foundplace}}
+              </b-list-group-item>
+              <b-list-group-item variant="info">
+                <font-awesome-icon :icon="['fas', 'thumbtack']" />
+                收容所地址:
+                <br />
+                <br />
+                {{shelter_address}}
+              </b-list-group-item>
+              <b-list-group-item variant="warning">
+                <font-awesome-icon :icon="['fas', 'home']" />
+                所屬收容所:
+                {{shelter_name}}
+                <br />
+                <br />
+                <b-embed
+                  aspect="1by1"
+                  frameborder="0"
+                  style="border:0"
+                  :src="google_map"
+                  allowfullscreen
+                ></b-embed>
+              </b-list-group-item>
+              <b-list-group-item variant="warning">
+                <font-awesome-icon :icon="['fas', 'phone-alt']" />
+                收容所電話:
+                <a id="shelterTel" href="tel" @click="telephone">{{shelter_tel}}</a>
+              </b-list-group-item>
+              <b-list-group-item variant="info">
+                <font-awesome-icon :icon="['fas', 'comment-dots']" />
+                備註:
+                <br />
+                <br />
+                {{animal_remark}}
+              </b-list-group-item>
+            </b-list-group>
+          </div>
+        </b-row>
       </b-row>
     </div>
   </div>
@@ -111,7 +120,7 @@ export default {
   data() {
     return {
       petId: "",
-      pet: [],
+      pet: []
     };
   },
   computed: {
@@ -209,19 +218,20 @@ export default {
       return this.pet[0].animal_remark;
     },
     google_map: function() {
-      let map_url = "https://www.google.com/maps/embed/v1/place?key=AIzaSyCju9MUbcqVpDRGsbUo4GjhiKNpSAehIHs&q="
+      let map_url =
+        "https://www.google.com/maps/embed/v1/place?key=AIzaSyCju9MUbcqVpDRGsbUo4GjhiKNpSAehIHs&q=";
       return map_url + this.shelter_name;
     }
   },
   methods: {
-    telephone: function() {
+    telephone() {
       //call shelter
       let ele = document.getElementById("shelterTel");
       ele.href = "tel:" + this.pet[0].shelter_tel;
       return ele;
       // eslint-disable-next-line
       console.log(ele.href);
-    },
+    }
   }
 };
 </script>
