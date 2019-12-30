@@ -1,11 +1,16 @@
   <template>
   <div class="container-fluid">
+    <back-to-top bottom="50px" right="50px">
+      <b-button size="lg" variant="warning" class="btn btn-info btn-to-top">
+        <font-awesome-icon :icon="['fas', 'angle-up']" :style="{ color: 'white' }"/>
+      </b-button>
+    </back-to-top>
     <b-container>
       <b-row>
         <filter-sec @filterParam="reload($event)"></filter-sec>
       </b-row>
       <b-row>
-        <b-card-group deck class="mt-5 ml-3" >
+        <b-card-group deck class="mt-5 ml-3">
           <!--所有card都在同一個card deck-->
           <div v-bind:key="index" v-for="(data, index) in pets">
             <b-card
@@ -24,11 +29,12 @@
               </div>
 
               <!--
-                <b-card-title>{{"可愛的" + data.animal_kind + data.animal_kind}}</b-card-title>-->
+              <b-card-title>{{"可愛的" + data.animal_kind + data.animal_kind}}</b-card-title>-->
               <!--sex-->
               <div>
                 <span class="detail-text --title">
-                  <font-awesome-icon :icon="['fas', 'paw']" />性別
+                  <font-awesome-icon :icon="['fas', 'paw']" />
+                  性別
                 </span>
                 <span class="detail-text" v-if="data.animal_sex == 'M'">男生</span>
                 <span class="detail-text" v-else-if="data.animal_sex == 'F'">女生</span>
@@ -37,7 +43,8 @@
               <!--size-->
               <div>
                 <span class="detail-text --title">
-                  <font-awesome-icon :icon="['fas', 'paw']" />體型
+                  <font-awesome-icon :icon="['fas', 'paw']" />
+                  體型
                 </span>
                 <span class="detail-text" v-if="data.animal_bodytype == 'SMALL'">小型</span>
                 <span class="detail-text" v-else-if="data.animal_bodytype == 'MEDIUM'">中型</span>
@@ -46,7 +53,8 @@
               <!--location-->
               <div>
                 <span class="detail-text --title">
-                  <font-awesome-icon :icon="['fas', 'paw']" />所在地
+                  <font-awesome-icon :icon="['fas', 'paw']" />
+                  所在地
                 </span>
                 <span class="detail-text">{{data.animal_place.slice(0,3)}}</span>
               </div>
@@ -60,40 +68,41 @@
     </b-container>
     <infinite-loading spinner="circles" @infinite="infiniteHandler" :identifier="reloadKey">
       <div slot="no-results">
-        <font-awesome-icon :icon="['fas', 'paw']" /> 沒有您所選擇的寵物待領養 : )</div>
+        <font-awesome-icon :icon="['fas', 'paw']" />沒有您所選擇的寵物待領養 : )
+      </div>
       <div slot="no-more">
-        <font-awesome-icon :icon="['fas', 'paw']" /> 已列出所有寵物</div>
+        <font-awesome-icon :icon="['fas', 'paw']" />已列出所有寵物
+      </div>
     </infinite-loading>
-    
   </div>
 </template>
     
 <script>
 import axios from "axios";
-import Filter from '../components/Filter.vue'
+import Filter from "../components/Filter.vue";
 
 let api =
   "https://cors-anywhere.herokuapp.com/http://data.coa.gov.tw/Service/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL";
 
 export default {
   components: {
-      'filter-sec': Filter,
+    "filter-sec": Filter,
   },
   methods: {
     //infinite loading
     infiniteHandler($state) {
       let key = "&$top=" + this.top + "&$skip=" + this.skip + this.query; //query params
       axios.get(api + key).then(response => {
-        if (response.data.length>0) {
+        if (response.data.length > 0) {
           this.pets = this.pets.concat(response.data);
-          this.skip += 20;  //keep on loading 20 more
+          this.skip += 20; //keep on loading 20 more
           $state.loaded();
         } else {
           $state.complete();
         }
       });
     },
-    reload(params){
+    reload(params) {
       this.reloadKey += 1;
       this.query = params;
       this.pets = [];
@@ -107,16 +116,15 @@ export default {
       pets: [],
       top: 20,
       skip: 0,
-      query: '',
-      reloadKey: +new Date(),
+      query: "",
+      reloadKey: +new Date()
     };
   },
-  computed:{
+  computed: {
     animal_place: function() {
-      return this.pet.animal_place.slice(0,3);
-    },
-  },
-
+      return this.pet.animal_place.slice(0, 3);
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>

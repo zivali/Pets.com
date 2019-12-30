@@ -1,5 +1,10 @@
   <template>
   <div class="container-fluid body">
+    <back-to-top bottom="50px" right="50px">
+      <b-button size="lg" variant="warning" class="btn btn-info btn-to-top">
+        <font-awesome-icon :icon="['fas', 'angle-up']" :style="{ color: 'white' }"/>
+      </b-button>
+    </back-to-top>
     <b-container>
       <b-row>
         <filter-sec @filterParam="reload($event)"></filter-sec>
