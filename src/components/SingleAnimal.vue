@@ -1,7 +1,7 @@
 <template>
   <div class="container bg">
     <div class="row justify-content-center my-5">
-      <b-row class="topdown">
+      <b-row>
         <!-- animal-image -->
         <div class="col-md-5 text-center mt-4">
           <b-card style="max-width: 50rem;">
@@ -17,26 +17,23 @@
               編號: {{animal_id}}
             </b-list-group-item>
             <b-list-group-item variant="info">
-              <font-awesome-icon :icon="['fas', 'star']" />
-              區域編號:
+              <font-awesome-icon :icon="['fas', 'star']" />區域編號:
               <br />
               <br />
               {{animal_subid}}
             </b-list-group-item>
-            <b-list-group-item variant="danger">
+            <b-list-group-item variant="warning">
               <font-awesome-icon :icon="['fas', 'venus-mars']" />
               性別: {{animal_sex}}
             </b-list-group-item>
-            <b-list-group-item variant="danger">
-              <font-awesome-icon :icon="['fas', 'paw']" />
-              體態:
+            <b-list-group-item variant="warning">
+              <font-awesome-icon :icon="['fas', 'paw']" />體態:
               <br />
               <br />
               {{animal_bodytype}}, {{animal_age}}, {{animal_colour}}
             </b-list-group-item>
-            <b-list-group-item variant="danger">
-              <font-awesome-icon :icon="['fas', 'briefcase-medical']" />
-              醫療:
+            <b-list-group-item variant="warning">
+              <font-awesome-icon :icon="['fas', 'briefcase-medical']" />醫療:
               <br />
               <br />
               {{animal_sterilization}}, {{animal_bacterin}}
@@ -52,26 +49,31 @@
               發現地: {{animal_foundplace}}
             </b-list-group-item>
             <b-list-group-item variant="info">
-              <font-awesome-icon :icon="['fas', 'thumbtack']" />
-              收容所地址:
+              <font-awesome-icon :icon="['fas', 'thumbtack']" />收容所地址:
               <br />
               <br />
               {{shelter_address}}
             </b-list-group-item>
             <b-list-group-item variant="warning">
-              <font-awesome-icon :icon="['fas', 'home']" />
-              所屬收容所:
+              <font-awesome-icon :icon="['fas', 'home']" />所屬收容所:
+              {{shelter_name}}
               <br />
               <br />
-              <a id="shelterAdd" href= "google_map" target="_blank" @click="google_map">{{shelter_name}}</a>
+              <iframe
+                width="300"
+                height="300"
+                frameborder="0"
+                style="border:0"
+                :src= "google_map"
+                allowfullscreen
+              ></iframe>
             </b-list-group-item>
             <b-list-group-item variant="warning">
-              <font-awesome-icon :icon="['fas', 'phone-alt']" />
-              收容所電話: <a id="shelterTel" href="tel" @click="telephone">{{shelter_tel}}</a>
+              <font-awesome-icon :icon="['fas', 'phone-alt']" />收容所電話:
+              <a id="shelterTel" href="tel" @click="telephone">{{shelter_tel}}</a>
             </b-list-group-item>
             <b-list-group-item variant="info">
-              <font-awesome-icon :icon="['fas', 'comment-dots']" />
-              備註: 
+              <font-awesome-icon :icon="['fas', 'comment-dots']" />備註:
               <br />
               <br />
               {{animal_remark}}
@@ -102,7 +104,7 @@ export default {
   data() {
     return {
       petId: "",
-      pet: []
+      pet: [],
     };
   },
   computed: {
@@ -189,7 +191,7 @@ export default {
     },
     shelter_tel: function() {
       return this.pet[0].shelter_tel;
-    },    
+    },
     animal_place: function() {
       return this.pet[0].animal_place;
     },
@@ -198,22 +200,21 @@ export default {
     },
     animal_remark: function() {
       return this.pet[0].animal_remark;
+    },
+    google_map: function() {
+      let map_url = "https://www.google.com/maps/embed/v1/place?key=AIzaSyCju9MUbcqVpDRGsbUo4GjhiKNpSAehIHs&q="
+      return map_url + this.shelter_name;
     }
   },
   methods: {
-      telephone: function() {
+    telephone: function() {
       //call shelter
-      let ele = document.getElementById('shelterTel');
-      ele.href = 'tel:' + this.pet[0].shelter_tel;
+      let ele = document.getElementById("shelterTel");
+      ele.href = "tel:" + this.pet[0].shelter_tel;
       return ele;
       // eslint-disable-next-line
-      console.log(ele.href);    
-      },
-      google_map: function(){
-      let ele = document.getElementById('shelterAdd');
-      ele.href = 'https://www.google.com/maps/place/:' + this.pet[0].shelter_address;
-      return ele;
-      }
+      console.log(ele.href);
+    },
   }
 };
 </script>
