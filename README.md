@@ -1,4 +1,4 @@
-# Pet.com Animal Adoption Website
+# Pets.com Animal Adoption Website
  Live Demo: [Pets.com 寵物領養](https://pets.netlify.com/)
 
 
