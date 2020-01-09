@@ -219,7 +219,8 @@ export default {
     },
     google_map: function() {
       let map_url =
-        "https://www.google.com/maps/embed/v1/place?key=AIzaSyCju9MUbcqVpDRGsbUo4GjhiKNpSAehIHs&q=";
+        "https://www.google.com/maps/embed/v1/place?key=" + process.env.VUE_APP_API + "&q=";
+
       return map_url + this.shelter_name;
     }
   },

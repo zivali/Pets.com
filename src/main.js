@@ -23,6 +23,7 @@ Vue.use(InfiniteLoading);
 
 //vue-router
 import router from './router/router.js'
+
 Vue.config.productionTip = false
 
 new Vue({
