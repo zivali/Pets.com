@@ -36,6 +36,6 @@
 </template>
 
 
-<style>
+<style scoped>
 @import "../css/about.scss"
 </style>

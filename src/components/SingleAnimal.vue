@@ -1,7 +1,7 @@
 <template>
   <div class="container bg">
     <div class="row justify-content-center my-5">
-      <b-row class="mtop">
+      <b-row class="mt-2">
         <b-row class="d-none d-md-block">
           <b-col>
             <b-button pill variant="outline-secondary" @click="$router.go(-1)">
@@ -237,5 +237,4 @@ export default {
 };
 </script>
 <style>
-@import "../css/SingleAnimal.scss";
 </style>
