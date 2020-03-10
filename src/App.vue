@@ -3,8 +3,8 @@
     <router-view />
   </div>
 </template>
-<script>
 
+<script>
 export default {
   name: "app",
   components: {

@@ -76,7 +76,7 @@ import axios from "axios";
 import Filter from '../components/Filter.vue';
 
 let api =
-  "https://cors-anywhere.herokuapp.com/http://data.coa.gov.tw/Service/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL";
+  "https://cors-anywhere.herokuapp.com/https://data.coa.gov.tw/Service/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL";
 
 export default {
   components: {
