@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <back-to-top bottom="50px" right="50px">
       <b-button size="lg" variant="warning" class="btn btn-info btn-to-top">
-        <font-awesome-icon :icon="['fas', 'angle-up']" :style="{ color: 'white' }"/>
+        <font-awesome-icon :icon="['fas', 'angle-up']" :style="{ color: 'white' }" />
       </b-button>
     </back-to-top>
     <b-container>
@@ -33,8 +33,7 @@
               <!--sex-->
               <div>
                 <span class="detail-text --title">
-                  <font-awesome-icon :icon="['fas', 'paw']" />
-                  性別
+                  <font-awesome-icon :icon="['fas', 'paw']" />性別
                 </span>
                 <span class="detail-text" v-if="data.animal_sex == 'M'">男生</span>
                 <span class="detail-text" v-else-if="data.animal_sex == 'F'">女生</span>
@@ -43,8 +42,7 @@
               <!--size-->
               <div>
                 <span class="detail-text --title">
-                  <font-awesome-icon :icon="['fas', 'paw']" />
-                  體型
+                  <font-awesome-icon :icon="['fas', 'paw']" />體型
                 </span>
                 <span class="detail-text" v-if="data.animal_bodytype == 'SMALL'">小型</span>
                 <span class="detail-text" v-else-if="data.animal_bodytype == 'MEDIUM'">中型</span>
@@ -53,8 +51,7 @@
               <!--location-->
               <div>
                 <span class="detail-text --title">
-                  <font-awesome-icon :icon="['fas', 'paw']" />
-                  所在地
+                  <font-awesome-icon :icon="['fas', 'paw']" />所在地
                 </span>
                 <span class="detail-text">{{data.animal_place.slice(0,3)}}</span>
               </div>
@@ -66,7 +63,12 @@
         </b-card-group>
       </b-row>
     </b-container>
-    <infinite-loading :distance="distance" spinner="circles" @infinite="infiniteHandler" :identifier="reloadKey">
+    <infinite-loading
+      :distance="distance"
+      spinner="circles"
+      @infinite="infiniteHandler"
+      :identifier="reloadKey"
+    >
       <div slot="no-results">
         <font-awesome-icon :icon="['fas', 'paw']" />沒有您所選擇的寵物待領養 : )
       </div>
@@ -86,7 +88,7 @@ let api =
 
 export default {
   components: {
-    "filter-sec": Filter,
+    "filter-sec": Filter
   },
   methods: {
     //infinite loading

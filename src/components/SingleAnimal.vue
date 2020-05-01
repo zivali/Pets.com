@@ -1,24 +1,26 @@
 <template>
   <div class="container bg">
     <div class="row justify-content-center my-5">
-      <b-row class="mt-2">
-        <b-row class="d-none d-md-block">
+      <b-row class="mt-3">
+        <b-row class="d-none d-md-block" v-if="!loading">
           <b-col>
             <b-button pill variant="outline-secondary" @click="$router.go(-1)">
-              <font-awesome-icon :icon="['fas', 'angle-left']" />
-              返回
+              <font-awesome-icon :icon="['fas', 'angle-left']" />返回
             </b-button>
           </b-col>
         </b-row>
-        <b-row>
+        <b-row v-if="loading" class="text-center mt-5">
+          <font-awesome-icon :icon="['fa', 'spinner']" class="fa-spin fa-2x"/>
+        </b-row>
+        <b-row class="mt-3">
           <!-- animal-image -->
-          <div class="col-md-5 order-md-1 text-center mt-4">
+          <div class="col-md-5 order-md-1 text-center mt-4" v-if="!loading">
             <b-card style="max-width: 50rem;">
-              <b-img :src="this.pet[0].album_file" fluid-grow alt="Fluid-grow image"></b-img>
+              <b-img :src="pet[0].album_file" fluid-grow alt="Fluid-grow image"></b-img>
             </b-card>
           </div>
           <!-- animal description text -->
-          <div class="col-md-3 order-md-2">
+          <div class="col-md-3 order-md-2 mt-3" v-if="!loading">
             <span class="h5">動物資訊</span>
             <b-list-group class="h6">
               <b-list-group-item variant="info">
@@ -26,8 +28,7 @@
                 編號: {{animal_id}}
               </b-list-group-item>
               <b-list-group-item variant="info">
-                <font-awesome-icon :icon="['fas', 'star']" />
-                區域編號:
+                <font-awesome-icon :icon="['fas', 'star']" />區域編號:
                 <br />
                 <br />
                 {{animal_subid}}
@@ -37,15 +38,13 @@
                 性別: {{animal_sex}}
               </b-list-group-item>
               <b-list-group-item variant="warning">
-                <font-awesome-icon :icon="['fas', 'paw']" />
-                體態:
+                <font-awesome-icon :icon="['fas', 'paw']" />體態:
                 <br />
                 <br />
                 {{animal_bodytype}}, {{animal_age}}, {{animal_colour}}
               </b-list-group-item>
               <b-list-group-item variant="warning">
-                <font-awesome-icon :icon="['fas', 'briefcase-medical']" />
-                醫療:
+                <font-awesome-icon :icon="['fas', 'briefcase-medical']" />醫療:
                 <br />
                 <br />
                 {{animal_sterilization}}, {{animal_bacterin}}
@@ -53,16 +52,15 @@
             </b-list-group>
           </div>
           <!-- location description text -->
-          <div class="col-md-4 order-md-3">
+          <div class="col-md-4 order-md-3 mt-3" v-if="!loading">
             <span class="h5">帶他回家</span>
-            <b-list-group class="h6">
+            <b-list-group class="h6" >
               <b-list-group-item variant="info">
                 <font-awesome-icon :icon="['fas', 'search']" />
                 發現地: {{animal_foundplace}}
               </b-list-group-item>
               <b-list-group-item variant="info">
-                <font-awesome-icon :icon="['fas', 'thumbtack']" />
-                收容所地址:
+                <font-awesome-icon :icon="['fas', 'thumbtack']" />收容所地址:
                 <br />
                 <br />
                 {{shelter_address}}
@@ -82,13 +80,11 @@
                 ></b-embed>
               </b-list-group-item>
               <b-list-group-item variant="warning">
-                <font-awesome-icon :icon="['fas', 'phone-alt']" />
-                收容所電話:
+                <font-awesome-icon :icon="['fas', 'phone-alt']" />收容所電話:
                 <a id="shelterTel" href="tel" @click="telephone">{{shelter_tel}}</a>
               </b-list-group-item>
               <b-list-group-item variant="info">
-                <font-awesome-icon :icon="['fas', 'comment-dots']" />
-                備註:
+                <font-awesome-icon :icon="['fas', 'comment-dots']" />備註:
                 <br />
                 <br />
                 {{animal_remark}}
@@ -112,7 +108,7 @@ export default {
 
     axios.get(api + key).then(response => {
       this.pet = this.pet.concat(response.data);
-
+      this.loading = false
       // eslint-disable-next-line no-console
       console.log(this.pet);
     });
@@ -120,7 +116,8 @@ export default {
   data() {
     return {
       petId: "",
-      pet: []
+      pet: [],
+      loading: true
     };
   },
   computed: {
@@ -219,7 +216,9 @@ export default {
     },
     google_map: function() {
       let map_url =
-        "https://www.google.com/maps/embed/v1/place?key=" + process.env.VUE_APP_API + "&q=";
+        "https://www.google.com/maps/embed/v1/place?key=" +
+        process.env.VUE_APP_API +
+        "&q=";
 
       return map_url + this.shelter_name;
     }
