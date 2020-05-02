@@ -83,8 +83,9 @@
 import axios from "axios";
 import Filter from "../components/Filter.vue";
 
-let api =
-  "https://cors-anywhere.herokuapp.com/https://data.coa.gov.tw/Service/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL";
+// let api =
+//   "https://cors-anywhere.herokuapp.com/https://data.coa.gov.tw/Service/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL";
+let api = "https://petscom.herokuapp.com"
 
 export default {
   components: {
@@ -93,12 +94,17 @@ export default {
   methods: {
     //infinite loading
     infiniteHandler($state) {
-      let key = "&$top=" + this.top + "&$skip=" + this.skip + this.query; //query params
+      let key = "?top=" + this.top + "&skip=" + this.skip + this.query; //query params
+      // let number = { top: this.top, skip: this.skip }; //query params
+      // let params = Object.assign({}, number, this.query);
+
       axios.get(api + key).then(response => {
         if (response.data.length > 0) {
           this.pets = this.pets.concat(response.data);
           this.skip += 20; //keep on loading 20 more
           $state.loaded();
+          // eslint-disable-next-line no-console
+          // console.log(params)
         } else {
           $state.complete();
         }
@@ -118,7 +124,7 @@ export default {
       pets: [],
       top: 20,
       skip: 0,
-      query: "",
+      query: '',
       reloadKey: +new Date(),
       distance: 500
     };

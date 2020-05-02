@@ -78,8 +78,7 @@
 import axios from "axios";
 import Filter from "../components/Filter.vue";
 
-let api =
-  "https://cors-anywhere.herokuapp.com/https://data.coa.gov.tw/Service/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL";
+let api = "https://petscom.herokuapp.com"
 
 export default {
   components: {
@@ -89,9 +88,9 @@ export default {
     //infinite loading
     infiniteHandler($state) {
       let key =
-        "&$top=" +
+        "?top=" +
         this.top +
-        "&$skip=" +
+        "&skip=" +
         this.skip +
         "&animal_kind=狗" +
         this.query; //query params

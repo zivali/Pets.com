@@ -12,7 +12,7 @@
         <b-row v-if="loading" class="text-center mt-5">
           <font-awesome-icon :icon="['fa', 'spinner']" class="fa-spin fa-2x"/>
         </b-row>
-        <b-row class="mt-3">
+        <b-row class="mt-2">
           <!-- animal-image -->
           <div class="col-md-5 order-md-1 text-center mt-4" v-if="!loading">
             <b-card style="max-width: 50rem;">
@@ -98,13 +98,13 @@
 </template>
 <script>
 import axios from "axios";
-let api =
-  "https://cors-anywhere.herokuapp.com/https://data.coa.gov.tw/Service/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL";
+
+let api = "https://petscom.herokuapp.com"
 
 export default {
   mounted() {
     this.petId = this.$route.params.petId;
-    let key = "&animal_id=" + this.petId; //query params
+    let key = "?animal_id=" + this.petId; //query params
 
     axios.get(api + key).then(response => {
       this.pet = this.pet.concat(response.data);
